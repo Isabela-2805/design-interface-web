@@ -1,30 +1,7 @@
-const emojis = [
-  "👄",
-  "🧚‍♀️",
-  "💩",
-  "🐢",
-  "🤡",
-  "👁️",
-  "🐤",
-  "🙊",
-  "🌽",
-  "🌵",
-  "🌻",
-  "🐝",
-  "👄",
-  "🧚‍♀️",
-  "💩",
-  "🐢",
-  "🤡",
-  "👁️",
-  "🐤",
-  "🙊",
-  "🌽",
-  "🌵",
-  "🌻",
-  "🐝",
-];
-
+import { gsap } from "gsap";
+import image1 from "url:../images/image-patch.jpg";
+// refaire pour chaque image //
+const emojis = [image1];
 let firstChoice = null;
 let secondChoice = null;
 let cardsLeftToMatch = emojis.length / 2;
@@ -47,7 +24,11 @@ shuffle(emojis).forEach((emoji) => {
 
   // Ajout des 2 classes, .card et .hidden
   card.classList.add("card", "hidden");
-  card.dataset.emoji = emoji;
+  // card.dataset.emoji = emoji;
+
+  const image = document.createElement("img");
+  image.src = emoji;
+  card.appendChild(image);
 
   // écoute le clic sur la carte
   card.addEventListener("click", () => {
@@ -76,6 +57,7 @@ shuffle(emojis).forEach((emoji) => {
         }, 1000);
       }
     } else {
+      hjh;
       // on ne fait rien
     }
   });

@@ -1,7 +1,32 @@
 import { gsap } from "gsap";
 import image1 from "url:../images/image-patch.jpg";
+import image2 from "url:../images/peigne.jpg";
+import image3 from "url:../images/creme.jpeg";
+import image4 from "url:../images/mascara.jpeg";
+import image5 from "url:../images/parfum.jpeg";
+import image6 from "url:../images/rouge a levre.jpeg";
+import image7 from "url:../images/blush.jpeg";
+import image8 from "url:../images/fard a paupiere.jpeg";
+
 // refaire pour chaque image //
-const emojis = [image1];
+const emojis = [
+  image1,
+  image1,
+  image2,
+  image2,
+  image3,
+  image3,
+  image4,
+  image4,
+  image5,
+  image5,
+  image6,
+  image6,
+  image7,
+  image7,
+  image8,
+  image8,
+];
 let firstChoice = null;
 let secondChoice = null;
 let cardsLeftToMatch = emojis.length / 2;
@@ -24,7 +49,7 @@ shuffle(emojis).forEach((emoji) => {
 
   // Ajout des 2 classes, .card et .hidden
   card.classList.add("card", "hidden");
-  // card.dataset.emoji = emoji;
+  card.dataset.emoji = emoji;
 
   const image = document.createElement("img");
   image.src = emoji;
@@ -32,6 +57,7 @@ shuffle(emojis).forEach((emoji) => {
 
   // écoute le clic sur la carte
   card.addEventListener("click", () => {
+    if (!card.classList.contains("hidden")) return;
     if (firstChoice === null) {
       firstChoice = card;
       card.classList.remove("hidden");
@@ -40,11 +66,11 @@ shuffle(emojis).forEach((emoji) => {
       card.classList.remove("hidden");
 
       if (firstChoice.dataset.emoji === secondChoice.dataset.emoji) {
-        firstchoice = null;
+        firstChoice = null;
         secondChoice = null;
         cardsLeftToMatch = cardsLeftToMatch - 1;
         if (cardsLeftToMatch === 0) {
-          window.alert("Bravo tu es trop fort!");
+          window.alert("Bravo tu es trop forte!");
         }
         firstChoice = null;
         secondChoice = null;
@@ -54,10 +80,9 @@ shuffle(emojis).forEach((emoji) => {
           secondChoice.classList.add("hidden");
           firstChoice = null;
           secondChoice = null;
-        }, 1000);
+        }, 800);
       }
     } else {
-      hjh;
       // on ne fait rien
     }
   });
